@@ -1,13 +1,13 @@
 [package]
 name = "async_static"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["liangyongrui <leungyongrui@gmail.com>"]
 edition = "2018"
 keywords = ['async', 'lazy_static']
 description = 'A macro for declaring async lazily evaluated statics in Rust.'
-homepage = 'https://github.com/hjiayz/async_once'
-repository = 'https://github.com/hjiayz/async_once'
-readme = 'README.MD'
+homepage = 'https://github.com/liangyongrui/async_static'
+repository = 'https://github.com/liangyongrui/async_static'
+readme = 'readme.md'
 license = 'MIT OR Apache-2.0'
 
 [lib]
