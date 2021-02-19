@@ -34,6 +34,7 @@
 
 ```rust
 use async_static::async_static;
+use tokio::time::sleep;
 
 async fn get_num() -> i32 {
     println!("hello world");
