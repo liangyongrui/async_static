@@ -1,7 +1,11 @@
+use std::time::Duration;
+
 use async_static::async_static;
+use tokio::time::sleep;
 
 async fn get_num() -> i32 {
     println!("hello world");
+    sleep(Duration::from_millis(100)).await;
     123
 }
 
