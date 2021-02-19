@@ -1,0 +1,23 @@
+[package]
+name = "async_static"
+version = "0.1.0"
+authors = ["liangyongrui <leungyongrui@gmail.com>"]
+edition = "2018"
+keywords = ['async', 'lazy_static']
+description = 'A macro for declaring async lazily evaluated statics in Rust.'
+homepage = 'https://github.com/hjiayz/async_once'
+repository = 'https://github.com/hjiayz/async_once'
+readme = 'README.MD'
+license = 'MIT OR Apache-2.0'
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = { version = "1", features = ["full"] }
+quote = "1"
+proc-macro2 = { version = "1", features = ["nightly"] }
+once_cell = "1"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full"] }
