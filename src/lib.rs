@@ -41,7 +41,7 @@ pub fn async_static(input: TokenStream) -> TokenStream {
     } = parse_macro_input!(input as AsyncStatic);
 
     let init_future = quote_spanned! {init.span()=>
-        once_cell::sync::Lazy::new(||std::sync::Mutex::new(Box::pin(async { #init })))
+        once_cell::sync::Lazy::new(|| std::sync::Mutex::new(Box::pin(async { #init })))
     };
 
     let expanded = quote! {
@@ -63,15 +63,18 @@ pub fn async_static(input: TokenStream) -> TokenStream {
                     match fut.as_mut().poll(cx) {
                         std::task::Poll::Ready(value) => {
                             if ONCE.set(value).is_err() {
+                                cx.waker().wake_by_ref();
                                 return std::task::Poll::Pending;
                             }
                         }
                         std::task::Poll::Pending => {
+                            cx.waker().wake_by_ref();
                             return std::task::Poll::Pending;
                         }
                     };
                     std::task::Poll::Ready(ONCE.get().unwrap())
                 } else {
+                    cx.waker().wake_by_ref();
                     std::task::Poll::Pending
                 }
             }
