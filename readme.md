@@ -32,7 +32,18 @@
 
 ## Basic usage
 
-```rust
+dependencies
+
+```toml
+async_static = "0.1"
+once_cell = "1"
+# Only used in the current example
+tokio = { version = "1", features = ["full"] }
+```
+
+src
+
+````rust
 use async_static::async_static;
 use tokio::time::sleep;
 
@@ -62,7 +73,7 @@ async fn test() {
     let n = FOO.await;
     println!("The result of the second call: {}", n);
 }
-```
+````
 
 ## License
 
